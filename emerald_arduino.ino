@@ -1,7 +1,7 @@
 #include <LiquidCrystal.h>
 #include "shortcuts.hpp"
 #include "control.hpp"
-#include "pin.h"
+#include "pin.hpp"
 #include "data_struct.hpp"
 #include "programma.hpp"
 #include "getters.hpp"
