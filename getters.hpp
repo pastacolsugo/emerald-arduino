@@ -56,19 +56,9 @@ void getSerial (black_magic_data* response){
 	response -> temperature_inside = temperature;
 }
 
-void getTime (TIME* res, bool SERIAL_ENABLE){
-	// printf ("Inserisci:MM\tGG\thh\tmm\n");
- 	// scanf ("%hu %hu %hu %hu", &res.month, &res.day, &res.hour, &res.minute);
-//	if (SERIAL_ENABLE){
-//		while (Serial1.available() > 0){
-//			Serial1.read();
-//		}
-//		Serial1.write("time");
-//		delay(1);
-//		for (usi i=0; Serial1.available(); i++){
-//
-//		}
-//	}
+void getTime (TIME* res){
+	// #cetriolo
+	// read time from RTC
 
  	if (res->month > 12 || res->day > 31 || res->hour > 24 || res->minute > 59){
  		res->month = 0;
@@ -78,48 +68,15 @@ void getTime (TIME* res, bool SERIAL_ENABLE){
  	}
 }
 
-void getTemp (usi* res){
-	// printf("Inserisci la temperatura: ");
-	scanf ("%hu", res);
-}
+// void packItUp (TIME* time_now, usi* temperature_in,
+// 	usi* temperature_out, usi* hum, black_magic_data* res){
 
-void getTempInside (usi* res){
-	getTemp(res);
-}
+// 	res->time = *time_now;
+// 	res->temperature_inside =  *temperature_in;
+// 	res->temperature_outside = *temperature_out;
+// 	res->humidity = *hum;	
 
-void getTempOutside (usi* res){
-	getTemp(res);
-}
-
-void getHum (usi* res){
-	getTemp(res);
-}
-
-// DEPRECATED
-// with old output
-// black_magic_data packItUp (TIME tempo_attuale, usi temperatura_in,
-// 	usi temperatura_out, usi umidita, OUT old_output){
-
-// 	black_magic_data res = {
-// 		tempo_attuale, 
-// 		temperatura_in, 
-// 		temperatura_out, 
-// 		umidita, 
-// 		old_output
-// 	};
-
-// 	return res;
 // }
-
-void packItUp (TIME* time_now, usi* temperature_in,
-	usi* temperature_out, usi* hum, black_magic_data* res){
-
-	res->time = *time_now;
-	res->temperature_inside =  *temperature_in;
-	res->temperature_outside = *temperature_out;
-	res->humidity = *hum;	
-
-}
 
 void getData (black_magic_data* response, bool SERIAL_ENABLE){
 //	Serial.print("getData: ");
@@ -130,28 +87,6 @@ void getData (black_magic_data* response, bool SERIAL_ENABLE){
 
 	} else {
 		// reading time from the RTC
-		getTime (&(response->time), SERIAL_ENABLE);
-
-		// reading inside temperature
-		if (CONTROL_HEAT){
-			getTempInside(&(response->temperature_inside));
-			// usi act_temp_inside = 0;
-		}
-
-		// reading outside temperature
-		if (CONTROL_AIR_SOURCE){
-			getTempOutside(&(response->temperature_outside));
-			// usi act_temp_outside = 0;
-		}
-
-		// reading inside humidity
-		if (CONTROL_HUMIDITY){
-			getHum(&(response->humidity));
-		}
-
-		// create a variable containing all the data needed
-		// time, sensor reading and last output configuration
-		// packItUp (&current_time, &current_temp_inside, &current_temp_outside,
-			// &current_hum, &response);
+		getTime (&(response->time));
 	}
 }

@@ -1,4 +1,5 @@
 #include <LiquidCrystal.h>
+// #cetriolo
 // #include <>		// RTC LIBRARY
 #include "shortcuts.hpp"
 #include "control.hpp"
@@ -6,10 +7,7 @@
 #include "data_struct.hpp"
 #include "programma.hpp"
 #include "getters.hpp"
-// #include "hysteresis.hpp"
 #include "finder_1.hpp"
-// #include "find_heater.hpp"
-// #include "find_hum.hpp"
 #include "lcd.hpp"
 #include "output.hpp"
 
@@ -19,6 +17,7 @@ bool SERIAL_ENABLE = false;
 // A0 keypad
 LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
 
+// #cetriolo
 // RTC obj init;
 
 usi index = 0;
@@ -75,6 +74,7 @@ void emerald_control (){
 	// taking the actual state as input
 	output1 = black_magic_box (input, &season);
 
+
 	// printout (output1, input);
 
 	// 
@@ -127,9 +127,9 @@ void setup(){
 	pinMode(SERIAL_SWITCH, INPUT);
   
 	lcd.setCursor(0, 0);
-	lcd.print("Emerald Core");
+	lcd.print("  Emerald Core");
 	lcd.setCursor(0,1);
-	lcd.print("v1.0");
+	lcd.print("v2.1 Cetriolo Ed");
   
 	delay(2000);
 }
