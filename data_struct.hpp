@@ -18,6 +18,7 @@ struct HML { //hour minute light = HML
 };
 
 typedef HML HMW; // hour minute water
+typedef HML HMF; // hour minute fan
 
 struct HMT { //hour minute temperature
 	HM time;

@@ -1,22 +1,25 @@
 #include <LiquidCrystal.h>
+// #include <>		// RTC LIBRARY
 #include "shortcuts.hpp"
 #include "control.hpp"
 #include "pin.hpp"
 #include "data_struct.hpp"
 #include "programma.hpp"
 #include "getters.hpp"
-#include "hysteresis.hpp"
+// #include "hysteresis.hpp"
 #include "finder_1.hpp"
-#include "find_heater.hpp"
-#include "find_hum.hpp"
+// #include "find_heater.hpp"
+// #include "find_hum.hpp"
 #include "lcd.hpp"
 #include "output.hpp"
 
-bool SERIAL_ENABLE = true;
+bool SERIAL_ENABLE = false;
 
 // D8 RS - D9 Enable - D4 Data4 - D5 Data 5 - D6 Data6 - D7 Data7
 // A0 keypad
 LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
+
+// RTC obj init;
 
 usi index = 0;
 usi year = 2017;
@@ -48,24 +51,9 @@ OUT black_magic_box (black_magic_data req, usi* seas){
 	if (CONTROL_WATER) {
 		res.water 	= findWater (&req.time, &current_season);
 	}
-	
-	if (CONTROL_HEAT){
-		// create state variable for temperature managing group
-		bool_pair heat_state = makeBoolPair (req.output.heater, 
-			req.output.cooler);
 
-		// computing temperature management output
-		findHeat (req.time, current_season, req.temperature_inside,
-		req.temperature_outside, heat_state, &res);
-	}
-	
-	if (CONTROL_HUMIDITY){
-		// create state variable for humidity managing group
-		bool_pair hum_state = makeBoolPair (req.output.hum, req.output.dehum);
-
-		// computing humidity management output
-		findHum (req.time, current_season,
-			req.humidity, hum_state, &res);
+	if (CONTROL_FAN) {
+		res.fan = findFan (&req.time, &current_season);		
 	}
 
 	return res;
@@ -117,11 +105,13 @@ void emerald_control (){
 }
 
 void setup(){
-	Serial.begin(9600);
-//	Serial1.begin(115200);
-  Serial1.begin(250000);
+	// Serial.begin(9600);
+	// Serial1.begin(115200);
+	// Serial1.begin(250000);
   
 	lcd.begin(16, 2);
+
+	// RTC init;
   
 	pinMode(A0, INPUT);
 	pinMode(A1, INPUT);

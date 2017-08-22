@@ -72,3 +72,22 @@ bool findWater (TIME* req, usi* stag){
 	}
 	return res;
 }
+
+bool findFan (TIME* req, usi* stag){
+	bool res = FAN[*stag][nW-1].state;
+
+	for (int i=1; i<nW; i++){
+		TIME temporary = {
+			req->month, 
+			req->day, 
+			FAN[*stag][i].time.hour, 
+			FAN[*stag][i].time.minute
+		};
+
+		if (compareTIME(req, &temporary) == 1){
+			res = FAN[*stag][i-1].state;
+			break;
+		}
+	}
+	return res;
+}

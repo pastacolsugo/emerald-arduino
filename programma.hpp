@@ -78,99 +78,13 @@ const HML LIGHT_2 [][nCrep] = {
 		{ {20, 0},	off}
 	}
 };
- 
-                                                                             
-// mmmmmmm                                             m                        
-//    #     mmm   mmmmm  mmmm    mmm    m mm   mmm   mm#mm  m   m   m mm   mmm  
-//    #    #"  #  # # #  #" "#  #"  #   #"  " "   #    #    #   #   #"  " #"  # 
-//    #    #""""  # # #  #   #  #""""   #     m"""#    #    #   #   #     #"""" 
-//    #    "#mm"  # # #  ##m#"  "#mm"   #     "mm"#    "mm  "mm"#   #     "#mm" 
-//                       #                                                      
-//                       "            
-
-// indicata in decimi di grado celsius
-// 20 C = 200 dC
-// temperature is measured in tenths of a Celsius degree (10^-1 C)
-
-const unsigned short int nT = 4; //numero temperature
 
 
-unsigned short int dT_sup = 10;
-unsigned short int dT_inf = 10;
-
-unsigned short int heat_dT_sup = 3;
-unsigned short int heat_dT_inf = 3;
-unsigned short int cool_dT_sup = 3;
-unsigned short int cool_dT_inf = 3;
-
-const HMT TEMPERATURE[][nT] = {		//mancano le stagioni!
-	{
-		{{ 0,  0},	150},
-		{{ 8,  0},	180},
-		{{ 13, 0},	200},
-		{{ 22, 0},	170}
-	},
-	{
-		{{ 0,  0},	150},
-		{{ 8,  0},	180},
-		{{ 13, 0},	200},
-		{{ 22, 0},	170}
-	},
-	{
-		{{ 0,  0},	150},
-		{{ 8,  0},	180},
-		{{ 13, 0},	200},
-		{{ 22, 0},	170}
-	}
-};
- 
- // m    m                 "        #    "      m          
- // #    # m   m  mmmmm  mmm     mmm#  mmm    mm#mm  m   m 
- // #mmmm# #   #  # # #    #    #" "#    #      #    "m m" 
- // #    # #   #  # # #    #    #   #    #      #     #m#  
- // #    # "mm"#  # # #  mm#mm  "#m##  mm#mm    "mm   "#   
- //                                                   m"   
- //                                                  ""  
-
-const unsigned short int nU = 4;
-
-const unsigned short int dU_sup = 10;
-const unsigned short int dU_inf = 10;
-
-const unsigned short int hum_dU_inf = 3;
-const unsigned short int hum_dU_sup = 3;
-const unsigned short int dehum_dU_inf = 3;
-const unsigned short int dehum_dU_sup = 3;
-
-
-const HMH HUMIDITY[][nU] = { //mancano le stagioni!
-	{
-		{{0,  0}, 	600},
-		{{10, 0}, 	300},
-		{{15, 0}, 	400},
-		{{19, 0}, 	800}
-	},
-	{
-		{{0,  0}, 	600},
-		{{10, 0}, 	300},
-		{{15, 0}, 	400},
-		{{19, 0}, 	800}
-	},
-	{
-		{{0,  0}, 	600},
-		{{10, 0}, 	300},
-		{{15, 0}, 	400},
-		{{19, 0}, 	800}
-	}
-};
-
-
-                                   
-	// m     m          m                 
-	// #  #  #  mmm   mm#mm   mmm    m mm 
-	// " #"# # "   #    #    #"  #   #"  "
-	//  ## ##" m"""#    #    #""""   #    
-	//  #   #  "mm"#    "mm  "#mm"   #    
+ // m     m          m                 
+ // #  #  #  mmm   mm#mm   mmm    m mm 
+ // " #"# # "   #    #    #"  #   #"  "
+ //  ## ##" m"""#    #    #""""   #    
+ //  #   #  "mm"#    "mm  "#mm"   #    
 
 const unsigned short int nW = 3;		//numero 
 
@@ -192,6 +106,31 @@ const HMW WATER[][nW] = {		//mancano le stagioni!
 	}	
 };
 
+ // mmmmmm              
+ // #       mmm   m mm  
+ // #mmmmm "   #  #"  # 
+ // #      m"""#  #   # 
+ // #      "mm"#  #   # 
 
+const unsigned short int nF = 4;
 
-
+const HMF FAN[][nF] = {
+	{
+		{ {0, 0},	off},
+		{ {0, 0},	off},
+		{ {0, 0},	off},
+		{ {0, 0},	off}
+	},
+	{
+		{ {0, 0},	off},
+		{ {0, 0},	off},
+		{ {0, 0},	off},
+		{ {0, 0},	off}
+	},
+	{
+		{ {0, 0},	off},
+		{ {0, 0},	off},
+		{ {0, 0},	off},
+		{ {0, 0},	off}
+	}
+};
