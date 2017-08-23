@@ -61,7 +61,7 @@ void emerald_control (){
 	// Serial.println("emerald_control");
 	black_magic_data input;
 
-	getData(&input, SERIAL_ENABLE);	
+	getData(&input, SERIAL_ENABLE, &rtc);	
 
 	input.output = output2;
 	
@@ -122,10 +122,7 @@ void setup(){
 	pinMode (PIN_LIGHT1, OUTPUT);
 	pinMode (PIN_LIGHT2, OUTPUT);
 	pinMode (PIN_WATER, OUTPUT);
-	pinMode (PIN_HEATER, OUTPUT);
 	pinMode (PIN_FAN, OUTPUT);
-	pinMode (PIN_HUMI, OUTPUT);
-	pinMode (PIN_AIR_SOURCE, OUTPUT);
 
 	pinMode(SERIAL_SWITCH, INPUT);
   

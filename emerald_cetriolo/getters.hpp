@@ -30,11 +30,6 @@ void getSerial (black_magic_data* response){
 	month += (payload[9]-'0') * 10;
 	month += payload[10]-'0';
 
-	usi temperature = 0;
-	temperature += (payload[12]-'0') * 100;
-	temperature += (payload[13]-'0') * 10;
-	temperature += (payload[14]-'0');
-
 	// debug: print stuff to check conversion
 
 	// Serial.println ("min hour day month");
@@ -42,8 +37,6 @@ void getSerial (black_magic_data* response){
 	// Serial.println (hour);
 	// Serial.println (day);
 	// Serial.println (month);
-	// Serial.print ("temperature: ");
-	// Serial.println (temperature);
 
 	// Serial.println ("delay 2 sec");
 	// delay (2000);
@@ -55,13 +48,13 @@ void getSerial (black_magic_data* response){
 
 }
 
-void getTime (TIME* res){
-	DateTime rtc_time = rtc.now();
+void getTime (TIME* res, RTC_DS1307* rtc_p){
+	DateTime rtc_time = rtc_p->now();
 
-	res->month = rtc_time.Month;
-	res->day = rtc_time.Day;
-	res->hour = rtc_time.Hour;
-	res->minute = rtc_time.Minute;
+	res->month = rtc_time.month();
+	res->day = rtc_time.day();
+	res->hour = rtc_time.hour();
+	res->minute = rtc_time.minute();
 
  	if (res->month > 12 || res->day > 31 || res->hour > 24 || res->minute > 59){
  		res->month = 0;
@@ -71,17 +64,7 @@ void getTime (TIME* res){
  	}
 }
 
-// void packItUp (TIME* time_now, usi* temperature_in,
-// 	usi* temperature_out, usi* hum, black_magic_data* res){
-
-// 	res->time = *time_now;
-// 	res->temperature_inside =  *temperature_in;
-// 	res->temperature_outside = *temperature_out;
-// 	res->humidity = *hum;	
-
-// }
-
-void getData (black_magic_data* response, bool SERIAL_ENABLE){
+void getData (black_magic_data* response, bool SERIAL_ENABLE, RTC_DS1307* rtc_p){
 //	Serial.print("getData: ");
 //	Serial.println(SERIAL_ENABLE);
 
@@ -90,6 +73,6 @@ void getData (black_magic_data* response, bool SERIAL_ENABLE){
 
 	} else {
 		// reading time from the RTC
-		getTime (&(response->time));
+		getTime (&(response->time), rtc_p);
 	}
 }
