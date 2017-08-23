@@ -24,7 +24,7 @@ usi year = 2017;
 	// create output configuration
 	// output1 is the one that will be applied
 	// output2 is the one that has last been applied
-OUT output1, output2 = {0, 0, 0, 0, 0};
+OUT output1, output2 = {0, 0, 0, 0};
 usi season = 0;
 
 OUT black_magic_box (black_magic_data req, usi* seas){
@@ -34,7 +34,7 @@ OUT black_magic_box (black_magic_data req, usi* seas){
 	// pass the current season to a given location, to be used in the LCD
 	*seas = current_season;	
 
-	OUT res = {false, false, false, false, false, false, false, false};
+	OUT res = {false, false, false, false};
 	
 	// compute light status
 	
@@ -87,7 +87,6 @@ void emerald_control (){
 		input.time,
 		output1,
 		season, 
-		input.temperature_inside
 	};
 	// screen lcd_data = {
 	// 	{5, 6, 11, 16},

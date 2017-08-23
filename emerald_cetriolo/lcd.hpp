@@ -41,22 +41,22 @@ void firstLine (char* first_line, screen* data, usi* year){
 
 void secondLine (char* second_line, screen* data){
 
-	second_line[2] = ((data->temperature/100)%10) + '0';
-	second_line[3] = ((data->temperature/10)%10) + '0';
+	// // second_line[2] = ((data->temperature/100)%10) + '0';
+	// // second_line[3] = ((data->temperature/10)%10) + '0';
 
-	if (data->out.water){
-		second_line[7] = '1';
-	} else {
-		second_line[7] = '0';
-	}
+	// if (data->out.water){
+	// 	second_line[7] = '1';
+	// } else {
+	// 	second_line[7] = '0';
+	// }
 
-	if (data->out.light){
-		second_line[11] = '1';
-	} else {
-		second_line[11] = '0';
-	}
+	// if (data->out.light){
+	// 	second_line[11] = '1';
+	// } else {
+	// 	second_line[11] = '0';
+	// }
 
-	second_line[15] = data->stag + '0';
+	// second_line[15] = data->stag + '0';
 
 }
 

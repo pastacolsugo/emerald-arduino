@@ -20,16 +20,6 @@ struct HML { //hour minute light = HML
 typedef HML HMW; // hour minute water
 typedef HML HMF; // hour minute fan
 
-struct HMT { //hour minute temperature
-	HM time;
-	unsigned short int temperature;
-};
-
-struct HMH { //hour minute humidity
-	HM time;
-	unsigned short int humidity;
-};
-
 struct TIME {
 	usi month;
 	usi day;
@@ -41,18 +31,11 @@ struct OUT {
 	bool light;
 	bool light2;
 	bool water;
-	bool heater;
-	bool cooler;
-	bool air_source;
-	bool hum;
-	bool dehum;
+	bool fan;
 };
 
 struct black_magic_data {
 	TIME time;
-	usi temperature_inside;
-	usi temperature_outside;
-	usi humidity;
 	OUT output;
 };
 
@@ -68,7 +51,6 @@ struct screen {
 	TIME time;
 	OUT out;
 	usi stag;
-	usi temperature;
 };
 
 struct bool_pair {

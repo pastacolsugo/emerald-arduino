@@ -53,7 +53,6 @@ void getSerial (black_magic_data* response){
 	response -> time.day = day;
 	response -> time.month = month;
 
-	response -> temperature_inside = temperature;
 }
 
 void getTime (TIME* res){
