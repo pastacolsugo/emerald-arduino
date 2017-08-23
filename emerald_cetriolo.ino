@@ -1,6 +1,6 @@
 #include <LiquidCrystal.h>
-// #cetriolo
-// #include <>		// RTC LIBRARY
+#include <Wire.h>
+#include "RTClib.h"		// RTC LIBRARY
 #include "shortcuts.hpp"
 #include "control.hpp"
 #include "pin.hpp"
@@ -17,8 +17,7 @@ bool SERIAL_ENABLE = false;
 // A0 keypad
 LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
 
-// #cetriolo
-// RTC obj init;
+RTC_DS1307 rtc;
 
 usi index = 0;
 usi year = 2017;
@@ -111,7 +110,12 @@ void setup(){
   
 	lcd.begin(16, 2);
 
-	// RTC init;
+	if (!rtc.begin()) {
+		lcd.clear();
+		lcd.setCursor (0, 0);
+		lcd.print ("RTC not found");
+		delay(2000);
+	}
   
 	pinMode(A0, INPUT);
 	pinMode(A1, INPUT);

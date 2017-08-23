@@ -57,8 +57,12 @@ void getSerial (black_magic_data* response){
 }
 
 void getTime (TIME* res){
-	// #cetriolo
-	// read time from RTC
+	DateTime rtc_time = rtc.now();
+
+	res->month = rtc_time.Month;
+	res->day = rtc_time.Day;
+	res->hour = rtc_time.Hour;
+	res->minute = rtc_time.Minute;
 
  	if (res->month > 12 || res->day > 31 || res->hour > 24 || res->minute > 59){
  		res->month = 0;
