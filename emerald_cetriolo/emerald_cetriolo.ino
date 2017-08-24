@@ -1,6 +1,6 @@
 #include <LiquidCrystal.h>
 #include <Wire.h>
-#include "RTClib.h"		// RTC LIBRARY
+#include "RTClib.h"
 #include "shortcuts.hpp"
 #include "control.hpp"
 #include "pin.hpp"
@@ -126,8 +126,8 @@ void setup(){
 
 	pinMode(SERIAL_SWITCH, INPUT);
   
-	lcd.setCursor(0, 0);
-	lcd.print("  Emerald Core");
+	lcd.setCursor(2, 0);
+	lcd.print("Emerald Core");
 	lcd.setCursor(0,1);
 	lcd.print("v2.1 Cetriolo Ed");
   
